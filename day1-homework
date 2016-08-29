@@ -1,0 +1,10 @@
+$ cd /Users/cmdb/data/fastq/
+$ fastqc SRR072893.fastq 
+$ cd data
+$ hisat2
+$ hisat2 -q -x BDGP6/BDGP6 -U fastq/SRR072893.fastq -p 4 -S 893.sam  
+$ samtools view
+$ samtools sort -o SRR072893.bam 893.sam
+$ samtools index SRR072893.bam SRR072893.bai
+$ stringtie
+$ stringtie -p  -e  -G BDGP6/BDGP6.Ensembl.85.gtf  -o SRR0720893.gtf  -B SRR072893.bam
