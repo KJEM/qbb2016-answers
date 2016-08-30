@@ -18,5 +18,8 @@ $ stringtie
 $ stringtie -p  -e  -G BDGP6/BDGP6.Ensembl.85.gtf  -o SRR0720893.gtf  -B SRR072893.bam
 
 Advanced Exercise
-1. cut -d $'\t' -f 3 893.sam | sort | uniq -c
-2.
+1. 
+$ cut -d $'\t' -f 3 893.sam | sort | uniq -c
+
+2. 
+$ cut -d $'\tcut -d $'\t' -f 3 893.sam | sort | uniq -c | sort
