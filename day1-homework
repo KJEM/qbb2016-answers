@@ -1,6 +1,7 @@
 Basic Exercise
 1.
 $ cd /Users/cmdb/data/fastq/
+$ gunzip SRR072893.fastq.gz
 $ fastqc SRR072893.fastq 
 
 2.
