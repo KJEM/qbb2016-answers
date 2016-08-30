@@ -1,10 +1,22 @@
+Basic Exercise
+1.
 $ cd /Users/cmdb/data/fastq/
 $ fastqc SRR072893.fastq 
+
+2.
 $ cd data
 $ hisat2
 $ hisat2 -q -x BDGP6/BDGP6 -U fastq/SRR072893.fastq -p 4 -S 893.sam  
+
+3.
 $ samtools view
 $ samtools sort -o SRR072893.bam 893.sam
 $ samtools index SRR072893.bam SRR072893.bai
+
+4. 
 $ stringtie
 $ stringtie -p  -e  -G BDGP6/BDGP6.Ensembl.85.gtf  -o SRR0720893.gtf  -B SRR072893.bam
+
+Advanced Exercise
+1. cut -d $'\t' -f 3 893.sam | sort | uniq -c
+2.
