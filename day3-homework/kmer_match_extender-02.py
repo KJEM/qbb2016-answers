@@ -2,6 +2,7 @@
 
 import sys
 import fasta
+import numpy
 
 k = int( sys.argv[1] )
 query = open( sys.argv[2])
@@ -48,10 +49,10 @@ for j in range( 0, len( q_seq )-k ):
             kmer = sequence[ i : i+k ]
                 
         n = 1  
-        n += 1+int(len(sequence))
+        #n += 1+int(len(sequence))
         if q_seq[j- n] == sequence[i- n]:
             ext_kmer = q_seq[i-n]+kmer
-            print q_seq[i-n]+kmer
+            print q_seq.append(kmer)
         if IndexError:
             pass
         else:
@@ -59,10 +60,10 @@ for j in range( 0, len( q_seq )-k ):
             pass    
         
         n = 1  
-        n += 1+int(len(sequence))
+        #n += 1+int(len(sequence))
         if q_seq[j+ n] == sequence[i+ n]:
             ext_kmer = q_seq[i-n]+kmer
-            print q_seq[i+n]+kmer
+            print kmer.append(q_seq)
         if IndexError:
             pass    
         else:
