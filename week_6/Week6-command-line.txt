@@ -1,0 +1,111 @@
+
+
+bowtie2-build [options]* <reference_in> <bt2_base>
+bowtie2-build 
+bowtie2-build 
+
+
+bedtools subtract [OPTIONS] -a <BED/GFF/VCF> -b <BED/GFF/VCF>
+
+
+meme-chip [options] [-db <motif database>]+ <sequences>
+
+
+bowtie2 -x index -q CTCF_ER4.fastq -S CTCF_ER4.sam
+
+bowtie2 -x index -q input_ER4.fastq -S input_ER4.sam
+
+
+/Users/cmdb/qbb2016-answers/week_6 $ bowtie2 -x index -q input_ER4.fastq -S input_ER4.sam
+166130 reads; of these:
+  166130 (100.00%) were unpaired; of these:
+    3459 (2.08%) aligned 0 times
+    161719 (97.34%) aligned exactly 1 time
+    952 (0.57%) aligned >1 times
+97.92% overall alignment rate
+/Users/cmdb/qbb2016-answers/week_6 $ bowtie2 -x index -q CTCF_ER4.fastq -S CTCF_ER4.sam
+270631 reads; of these:
+  270631 (100.00%) were unpaired; of these:
+    4371 (1.62%) aligned 0 times
+    264736 (97.82%) aligned exactly 1 time
+    1524 (0.56%) aligned >1 times
+98.38% overall alignment rate
+/Users/cmdb/qbb2016-answers/week_6 $ ls
+-S              CTCF_G1E.fastq  index.1.bt2     index.4.bt2     input_ER4.fastq stringtie-1.2.4
+CTCF_ER4.fastq  ER4.sam         index.2.bt2     index.rev.1.bt2 input_ER4.sa
+CTCF_ER4.sam    chr19.fa        index.3.bt2     index.rev.2.bt2 input_G1E.fastq
+/Users/cmdb/qbb2016-answers/week_6 $ bowtie2 -x index -q CTCF_G1E.fastq -S CTCF_G1E.sam
+270968 reads; of these:
+  270968 (100.00%) were unpaired; of these:
+    3863 (1.43%) aligned 0 times
+    265514 (97.99%) aligned exactly 1 time
+    1591 (0.59%) aligned >1 times
+98.57% overall alignment rate
+/Users/cmdb/qbb2016-answers/week_6 $ bowtie2 -x index -q input_G1E.fastq -S input_G1E.sam
+276733 reads; of these:
+  276733 (100.00%) were unpaired; of these:
+    5012 (1.81%) aligned 0 times
+    270142 (97.62%) aligned exactly 1 time
+    1579 (0.57%) aligned >1 times
+98.19% overall alignment rate
+/Users/cmdb/qbb2016-answers/week_6 $ 
+
+
+
+
+
+/Users/cmdb/qbb2016-answers/week_6 $ MACS2 callpeak
+usage: MACS2 callpeak [-h] -t TFILE [TFILE ...] [-c [CFILE [CFILE ...]]]
+                      [-f {AUTO,BAM,SAM,BED,ELAND,ELANDMULTI,ELANDEXPORT,BOWTIE,BAMPE,BEDPE}]
+                      [-g GSIZE] [--keep-dup KEEPDUPLICATES]
+                      [--buffer-size BUFFER_SIZE] [--outdir OUTDIR] [-n NAME]
+                      [-B] [--verbose VERBOSE] [--trackline] [--SPMR]
+                      [-s TSIZE] [--bw BW] [-m MFOLD MFOLD] [--fix-bimodal]
+                      [--nomodel] [--shift SHIFT] [--extsize EXTSIZE]
+                      [-q QVALUE | -p PVALUE] [--to-large] [--ratio RATIO]
+                      [--down-sample] [--seed SEED] [--tempdir TEMPDIR]
+                      [--nolambda] [--slocal SMALLLOCAL] [--llocal LARGELOCAL]
+                      [--broad] [--broad-cutoff BROADCUTOFF]
+                      [--cutoff-analysis] [--call-summits]
+                      [--fe-cutoff FECUTOFF]
+MACS2 callpeak: error: argument -t/--treatment is required
+
+
+
+usage: MACS2 callpeak [-h] -t TFILE [TFILE ...] [-c [CFILE [CFILE ...]]]
+
+
+/Users/cmdb/qbb2016-answers/week_6 $ bedtools subtract -A -a G1E_peaks.narrowPeak -b ER4_peaks.narrowPeak > G1E-ER4
+
+/Users/cmdb/qbb2016-answers/week_6 $ bedtools subtract -A -a ER4_peaks.narrowPeak -b G1E_peaks.narrowPeak > ER4-G1E.bed
+
+/Users/cmdb/qbb2016-answers/week_6 $ wc G1E-ER4
+     362    3620   26025 G1E-ER4
+/Users/cmdb/qbb2016-answers/week_6 $ wc ER4-G1E
+     810    8100   58684 ER4-G1E
+
+awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"}' ER4_peaks.narrowPeak > ER4.bed
+awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"}' G1E_peaks.narrowPeak > G1E.bed
+
+sort -n r k4
+
+meme-chip -nmeme 100 -db JASPAR_CORE_2016
+fasta
+itierate through top 100, cut out of reference sequence
+
+bedtools getfasta -fi chr19.fa -bed top100ER4.bed > ER4getfasta
+
+
+/usr/local/opt/meme/bin meme-chip -db JASPAR_CORE_2016 -o memeresults ER4getfasta
+
+/usr/local/opt/meme/bin/meme-chip -db JASPAR_CORE_2016.meme -o memeresults ER4getfasta
+
+
+/Users/cmdb/qbb2016-answers/week_6/memeresults $ /usr/local/opt/meme/bin/meme-chip -db JASPAR_CORE_2016.meme -o memeresults -meme-maxw 20 ER4getfasta
+
+
+
+
+
+
+
