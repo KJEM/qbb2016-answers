@@ -1,0 +1,21 @@
+# DREME 4.10.1
+# command:   dreme -v 1 -oc memeresults/dreme_out -p memeresults/seqs-centered -n memeresults/seqs-shuffled -png
+# host:      bio-cmdb-13.local
+# when:      Fri Oct 14 17:26:32 EDT 2016
+# positives: 100
+#      from: memeresults/seqs-centered (Fri Oct 14 17:26:29 EDT 2016)
+# negatives: 100
+#      from: memeresults/seqs-shuffled (Fri Oct 14 17:26:30 EDT 2016)
+
+
+MEME version 4.10.1
+
+ALPHABET= ACGT
+
+strands: + -
+
+Background letter frequencies (from dataset):
+A 0.268 C 0.250 G 0.240 T 0.243
+
+
+Time 0.32 secs.

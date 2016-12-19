@@ -1,0 +1,34 @@
+Invoking:
+  fasta-get-markov -nostatus -m 1 < memeresults/ER4getfasta 1> memeresults/background
+Finished invoke:
+  name: bg  status: 0  time: 0.058763
+Invoking:
+  getsize memeresults/ER4getfasta 1> $metrics
+Finished invoke:
+  name: count_seqs  status: 0  time: 0.058014
+Invoking:
+  fasta-most -min 50 < memeresults/ER4getfasta 1> $metrics
+Finished invoke:
+  name: most_seqs  status: 0  time: 0.091673
+Invoking:
+  fasta-center -len 100 < memeresults/ER4getfasta 1> memeresults/seqs-centered
+Finished invoke:
+  name: center_seqs  status: 0  time: 0.074359
+Invoking:
+  fasta-dinucleotide-shuffle -f memeresults/seqs-centered -t -dinuc 1> memeresults/seqs-shuffled
+Finished invoke:
+  name: shuffle_seqs  status: 0  time: 0.911593
+Invoking:
+  meme memeresults/seqs-centered -oc memeresults/meme_out -dna -mod zoops -nmotifs 3 -minw 6 -maxw 30 -bfile memeresults/background -revcomp -nostatus
+Finished invoke:
+  name: meme  status: 256  time: 1.392449
+Invoking:
+  dreme -v 1 -oc memeresults/dreme_out -p memeresults/seqs-centered -n memeresults/seqs-shuffled -png
+Finished invoke:
+  name: dreme  status: 0  time: 1.058241
+Invoking:
+  centrimo -seqlen 66 -verbosity 1 -oc memeresults/centrimo_out -bgfile memeresults/background memeresults/ER4getfasta JASPAR_CORE_2016.meme
+Finished invoke:
+  name: centrimo  status: 0  time: 1.756213
+Writing output
+Done

@@ -1,0 +1,2 @@
+All sequences must be at least 8 characters long.  Remove shorter sequences
+and rerun.
