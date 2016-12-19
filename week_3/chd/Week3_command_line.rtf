@@ -1,0 +1,132 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AndaleMono;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+\margl1440\margr1440\vieww23540\viewh8880\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+bwa index ref.fa \
+\
+\
+cat __referece1 reference 2 reference 3\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 bwa mem -R'@RG\\tID:foo\\tSM:bar1449' -aCHMpP reference.fa 1449_002_LA.region.fq > alignm_1449.sam\
+\
+bwa mem -R'@RG\\tID:foo\\tSM:bar1526' -aCHMpP reference.fa 1526_007_LA.region.fq > alignm_1526.sam\
+\
+bwa mem -R'@RG\\tID:foo\\tSM:bar1526' -aCHMpP reference.fa 183-005-NB.region.fq > alignm_183.sam\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 samtools view -bS test.sam > test.bam\
+\
+samtools view -bS \kerning1\expnd0\expndtw0 \CocoaLigature0 alignm_1449.sam > alignm_1449.bam\
+\
+\expnd0\expndtw0\kerning0
+\CocoaLigature1 samtools view -bS \kerning1\expnd0\expndtw0 \CocoaLigature0 alignm_1526.sam > alignm_1526.bam\
+\
+\expnd0\expndtw0\kerning0
+\CocoaLigature1 samtools view -bS \kerning1\expnd0\expndtw0 \CocoaLigature0 alignm_183.sam > alignm_183.bam\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 usage: bin/freebayes -f [REFERENCE] [OPTIONS] [BAM FILES] >[OUTPUT]\
+\
+bin/freebayes -f [REFERENCE] [OPTIONS] [BAM FILES] >[OUTPUT]\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 freebayes -f chr20.fa \\NA12878.chrom20.ILLUMINA.bwa.CEU.low_coverage.20121211.bam >NA12878.chr20.freebayes.vcf\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 bin/freebayes -f /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa /Users/cmdb/qbb2016-answers/week_3/chd/alignm_1449.bam\
+index file /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa.fai not found, gener\expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\
+samtools sort test.bam test_sorted\
+\
+\
+samtools sort \kerning1\expnd0\expndtw0 \CocoaLigature0 alignm_1449.bam 1449_sorted\\\
+\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 /Users/cmdb/qbb2016-answers/week_3/chd $ samtools sort alignm_183.sam > 183.sort.bam\
+/Users/cmdb/qbb2016-answers/week_3/chd $ samtools index 183.sort.bam\expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 /Users/cmdb/qbb2016-answers/week_3/chd $ samtools sort alignm_1526.sam > 1526.sort.bam\
+/Users/cmdb/qbb2016-answers/week_3/chd $ samtools index 1526.sort.bam\
+\
+\
+\
+\
+\
+/Users/cmdb/qbb2016-answers/week_3/chd $ samtools sort alignm_1449.sam > 1449.sort.bam\
+/Users/cmdb/qbb2016-answers/week_3/chd $ samtools index 1449.sort.bam\
+\
+\
+\
+bin/freebayes -f /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa /Users/cmdb/qbb2016-answers/week_3/chd/1449.sort.bam > 1449.vcf\
+\
+bin/freebayes -f /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa /Users/cmdb/qbb2016-answers/week_3/chd/1526.sort.bam > 1526.vcf\
+\
+bin/freebayes -f /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa /Users/cmdb/qbb2016-answers/week_3/chd/183.sort.bam > 183.vcf\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0  bin/freebayes -! --min-coverage 5 1449.vcf\
+\
+\
+bin/freebayes --min-coverage 5 -f /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa /Users/cmdb/qbb2016-answers/week_3/chd/1449.vcf\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 bin/freebayes --min-coverage 5 -f /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa /Users/cmdb/qbb2016-answers/week_3/chd/1449.vcf\
+\
+\
+bin/freebayes --min-coverage 5 -f /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa /Users/cmdb/qbb2016-answers/week_3/chd/183.sort.bam > 183_filtered.vcf\
+\
+\
+bin/freebayes --min-coverage 5 -f /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa /Users/cmdb/qbb2016-answers/week_3/chd/1449.sort.bam > 1449_filtered.vcf\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 bin/freebayes --min-coverage 5 -f /Users/cmdb/qbb2016-answers/week_3/chd/reference.fa /Users/cmdb/qbb2016-answers/week_3/chd/1526.sort.bam > 1526_filtered.vcf\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf2 \kerning1\expnd0\expndtw0 \CocoaLigature0 ^C/Users/cmdb/qbb2016-answers/week_3/chd/freebayes $ snpEff databases | grep "musculus"\
+GRCm38.75                                                   	Mus_musculus                                                	          	                              	http://downloads.sourceforge.net/project/snpeff/databases/v4_2/snpEff_v4_2_GRCm38.75.zip\
+GRCm38.81                                                   	Mus_musculus                                                	          	                              	http://downloads.sourceforge.net/project/snpeff/databases/v4_2/snpEff_v4_2_GRCm38.81.zip\
+GRCm38.82                                                   	Mus_musculus                                                	          	                              	http://downloads.sourceforge.net/project/snpeff/databases/v4_2/snpEff_v4_2_GRCm38.82.zip\
+Mus_musculus_papillomavirus_1_uid261354                     	Mus_musculus_papillomavirus_1_uid261354                     	          	NCBI_viruses_26               	http://downloads.sourceforge.net/project/snpeff/databases/v4_2/snpEff_v4_2_NCBI_viruses_26.zip\
+Mus_musculus_papillomavirus_type_1_uid50561                 	Mus_musculus_papillomavirus_type_1_uid50561                 	          	NCBI_viruses_26               	http://downloads.sourceforge.net/project/snpeff/databases/v4_2/snpEff_v4_2_NCBI_viruses_26.zip\
+testMm37.61                                                 	Mus_musculus                                                	          	                              	http://downloads.sourceforge.net/project/snpeff/databases/v4_2/snpEff_v4_2_testMm37.61.zip\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+
+\f1\fs30 \cf2 \
+\
+}
